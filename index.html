@@ -1,0 +1,82 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .modal {
+            display: none;
+        }
+
+        .modalOpen {
+            display: block;
+            background-color: gray;
+            align-items: center;
+            margin: 10% auto;
+        }
+
+        .color {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+
+<button id="open">Open</button>
+
+<div class="modal">
+    <div id="container">
+        <p>testing</p>
+        <button class="colorBtn">Color</button>
+        <button class="removeBtn">remove</button>
+    </div>
+    <p class="example">I am a paragraph.</p>
+    <p class="example">I am a paragraph.</p> 
+    <button class="close">Close</button>
+</div>
+
+<script>
+var openUp = document.querySelector("#open");
+var closeDown = document.querySelector(".close");
+var modal = document.querySelector(".modal");
+
+var para = document.querySelector("p");
+var color = document.querySelector(".colorBtn");
+
+openUp.addEventListener("click", function() {
+    modal.classList.add('modalOpen');
+})
+
+closeDown.addEventListener("click", function() {
+    modal.classList.remove('modalOpen');
+})
+
+
+color.addEventListener("click", function() {
+    para.classList.add('color');
+    mytimeout = setTimeout(timeBlue, 3000);
+    para.style.backgroundColor = "";
+
+    creatediv = document.createElement('div');
+    creatediv.setAttribute('class', 'added');
+    container = document.getElementById('container');
+    creatediv.textContent = "text";
+    container.appendChild(creatediv);
+
+    mytimeout = setTimeout(removeText, 3000);
+})
+
+function timeBlue() {
+    para.style.backgroundColor = "yellow";
+}
+
+function removeText() {
+    document.querySelector('.added').remove();
+}
+
+</script>
+
+</body>
+</html>
